@@ -45,22 +45,27 @@ func handlerCreateFile(w http.ResponseWriter, r *http.Request) {
 func handlerGetFile(w http.ResponseWriter, r *http.Request) {
 
 	log.Println(*r.URL)
-
 	if r.Method != http.MethodGet {
-		err := fmt.Errorf("")
+		err := fmt.Errorf("нето")
 		myerr.ServesError(w, err)
+		return
 	}
+	log.Println(1)
 	var jsonrequst jsonpkg.Request
 	err := json.NewDecoder(r.Body).Decode(&jsonrequst)
 	if err != nil {
 		myerr.ServesError(w, err)
+		return
 	}
-
+	log.Println(2)
 	file, err := os.Open(fmt.Sprintf("stor/%s.txt", jsonrequst.Title))
 	if err != nil {
 		myerr.ServesError(w, err)
+		return
 	}
+
 	defer file.Close()
+	log.Println(3)
 	filename := fmt.Sprintf("%s.txt", jsonrequst.Title)
 	//i, _ := file.Stat()
 	//w.Header().Set("Content-Type", fmt.Sprintf("attachment; filename=%s", filename))
