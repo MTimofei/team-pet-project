@@ -22,7 +22,7 @@ func handlerCreateFile(w http.ResponseWriter, r *http.Request) {
 	log.Println(*r.URL)
 
 	if r.Method != http.MethodPost {
-		err := fmt.Errorf("нетоы")
+		err := fmt.Errorf("нето ыsss")
 		myerr.ServesError(w, err)
 	}
 	var jsontempl jsonpkg.Files
@@ -45,7 +45,7 @@ func handlerCreateFile(w http.ResponseWriter, r *http.Request) {
 func handlerGetFile(w http.ResponseWriter, r *http.Request) {
 
 	log.Println(*r.URL)
-	if r.Method != http.MethodGet {
+	if r.Method != http.MethodPost {
 		err := fmt.Errorf("нето")
 		myerr.ServesError(w, err)
 		return

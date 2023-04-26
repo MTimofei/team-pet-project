@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-func StartServer() (err error) {
-	l, err := net.Listen("tcp", ":5000")
+func StartServer(addr *string) (err error) {
+	l, err := net.Listen("tcp", *addr)
 	if err != nil {
 		return err
 	}
